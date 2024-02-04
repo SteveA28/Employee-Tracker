@@ -94,9 +94,22 @@ async function mainMenu() {
         );
         break;
       case 'Update an employee role':
-        // Placeholder implementation - you will need to collect the necessary details
-        // await Employee.updateEmployeeRole(/* employeeId, newRoleId */);
-        console.log('Update an employee role is a placeholder and not implemented yet.');
+        const updateEmployeeRolePrompt = await inquirer.prompt([
+          {
+            name: 'employeeId',
+            type: 'number',
+            message: 'Enter the employee ID whose role you want to update:',
+          },
+          {
+            name: 'newRoleId',
+            type: 'number',
+            message: 'Enter the new role ID for the employee:',
+          },
+        ]);
+        await Employee.updateEmployeeRole(
+          updateEmployeeRolePrompt.employeeId,
+          updateEmployeeRolePrompt.newRoleId
+        );
         break;
       case 'Exit':
         console.log('Exiting application...');
